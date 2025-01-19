@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class PredictionService {
-  private apiUrl = 'http://127.0.0.1:5000/predict';
+  private apiUrl = 'https://alzheimer-back.vercel.app/predict';
   private res="boo";
   constructor(private http: HttpClient) {}
 
