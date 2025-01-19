@@ -1,0 +1,81 @@
+<div
+  class="flex flex-col items-center gap-8 p-8 max-w-lg mx-auto bg-gradient-to-r from-purple-50 via-gray-100 to-purple-50 shadow-lg rounded-xl border border-gray-300"
+>
+  <!-- Header -->
+  <h1 class="text-4xl font-bold text-gray-900 tracking-wide text-center">
+    🧠 Alzheimer's Speech Analysis
+  </h1>
+  <p class="text-gray-600 text-center text-sm mt-2">
+    Upload or record audio to assess speech patterns for early detection of
+    Alzheimer's disease.
+  </p>
+
+  <!-- File Input -->
+  <div class="w-full">
+    <label
+      for="file-input"
+      class="block mb-3 text-lg font-medium text-gray-800"
+    >
+      Upload Speech Recording
+    </label>
+    <div class="relative">
+      <input
+        id="file-input"
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="audio/*"
+        class="peer w-full border-2 border-gray-300 rounded-lg py-3 px-4 text-gray-700 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-indigo-600 file:text-white file:font-medium file:hover:bg-indigo-700 transition-all"
+      />
+      <p class="hidden peer-placeholder-shown:block text-sm text-gray-500 mt-2">
+        Please upload a clear audio recording of speech for analysis.
+      </p>
+    </div>
+  </div>
+
+  <!-- Recording Buttons -->
+  <div class="flex gap-6 w-full">
+    <button
+      (click)="startRecording()"
+      [disabled]="isRecording"
+      class="flex-1 px-6 py-3 text-lg font-semibold bg-gradient-to-r from-indigo-500 to-indigo-600 text-white rounded-lg shadow-xl transform transition-all duration-200 hover:scale-105 hover:from-indigo-600 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Start Recording
+    </button>
+    <button
+      (click)="stopRecording()"
+      [disabled]="!isRecording"
+      class="flex-1 px-6 py-3 text-lg font-semibold bg-gradient-to-r from-red-400 to-red-500 text-white rounded-lg shadow-xl transform transition-all duration-200 hover:scale-105 hover:from-red-500 hover:to-red-600 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Stop Recording
+    </button>
+  </div>
+
+  <!-- Audio Player -->
+  <div class="w-full">
+    <audio
+      *ngIf="audioUrl"
+      [src]="audioUrl"
+      controls
+      class="w-full border-2 border-gray-300 rounded-lg shadow-md bg-gray-50 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+    ></audio>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="w-full mt-6">
+    <div class="bg-gray-200 rounded-full h-2.5 mb-4">
+      <div
+        class="bg-indigo-600 h-2.5 rounded-full transition-all"
+        [style.width]="progress + '%'"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Prediction Button -->
+  <button
+    (click)="predict()"
+    [disabled]="!canPredict"
+    class="w-full mt-6 px-6 py-3 text-lg font-semibold bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg shadow-xl transform transition-all duration-200 hover:scale-105 hover:from-teal-600 hover:to-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+  >
+    Analyze Speech
+  </button>
+</div>

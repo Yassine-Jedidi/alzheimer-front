@@ -1,0 +1,36 @@
+.result-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+}
+
+.result-container p {
+  font-size: 1.125rem;
+  text-align: center;
+  color: #555;
+}
+
+.result-container button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, #38b2ac, #2c7a7b);
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.result-container button:hover {
+  background: linear-gradient(90deg, #319795, #2c7a7b);
+}
